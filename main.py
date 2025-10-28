@@ -4,8 +4,9 @@ from itertools import product
 
 
 G = nx.Graph()
-G.add_nodes_from([1, 2, 3])
-G.add_edges_from([(1, 2), (2, 3)])
+G.add_nodes_from([1, 2, 3, 4, 5])
+G.add_edges_from([(1, 2), (2, 3), (3, 4), (4, 2), (2, 5)])
+k = 3
 
 # print all vertices
 #print("Vertices of graph:")
@@ -15,7 +16,6 @@ G.add_edges_from([(1, 2), (2, 3)])
 #print(G.edges())
 
 colour_dict = {}
-k = 2
 
 def get_atomic_type_vector(v_tuple, graph):
     
@@ -115,19 +115,14 @@ def get_new_colors(raw_signatures):
     return new_color_list, signature_to_new_color, num_unique_colors
 
 
-def k_wl_algorithm(G, k):
+def k_wl_algorithm(G, k, initial_colouring):
     # --- Step 0: Initialization ---
     all_k_tuples = list(product(G.nodes(), repeat=k))
     
-    # Initial color map (C^0) based on the matrix K hash (your first step)
-    # Since we are focusing on the refinement loop, we assume an initial coloring exists.
-    # For a true k-WL, this would be based on the matrix K.
-    
-    # We use a placeholder here, assuming all tuples start with color 1.
-    current_coloring = {t: 1 for t in all_k_tuples}
+    current_coloring = initial_colouring.copy()
     
     # Store the previous set of unique colors to check for convergence
-    prev_num_unique_colors = 0 
+    prev_num_unique_colors = len(set(current_coloring.values())) 
     
     # Loop variables
     iteration = 1
@@ -135,9 +130,8 @@ def k_wl_algorithm(G, k):
 
     while iteration <= max_iterations:
         print(f"\n--- Starting Iteration {iteration} ---")
-        
- 
-        raw_signatures = refine(G, k, current_coloring) 
+
+        raw_signatures = refine(G, k, current_coloring)
         
         new_color_list, signature_map, num_unique_colors = get_new_colors(raw_signatures)
 
@@ -171,7 +165,7 @@ atomic_vector_list, initial_colouring = initialise()
 print("Initial C^0 Coloring computed.")
 
 # 2. Run the k-WL Algorithm
-final_features = k_wl_algorithm(G, k)
+final_features = k_wl_algorithm(G, k, initial_colouring)
 
 # 3. Print Final Result
 print("\n--- FINAL K-WL FEATURE VECTOR ---")
