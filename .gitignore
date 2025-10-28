@@ -1,0 +1,51 @@
+# Byte-compiled / caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Logs and reports
+*.log
+coverage.xml
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Static analysis / caches
+.mypy_cache/
+.pyre/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Databases
+*.sqlite3
+*.db
+
+# Local settings / secrets
+local_settings.py
+instance/
+.env.local
