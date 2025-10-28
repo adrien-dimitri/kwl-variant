@@ -121,7 +121,6 @@ def get_new_colors(raw_signatures):
 
 
 def k_wl_algorithm(G, k, initial_colouring, variant=False):
-    # --- Step 0: Initialization ---
     all_k_tuples = list(product(G.nodes(), repeat=k))
     
     current_coloring = initial_colouring.copy()
@@ -131,7 +130,7 @@ def k_wl_algorithm(G, k, initial_colouring, variant=False):
     
     # Loop variables
     iteration = 1
-    max_iterations = 100 # Safety stop
+    max_iterations = 100
 
     while iteration <= max_iterations:
         if variant:
@@ -163,7 +162,7 @@ def k_wl_algorithm(G, k, initial_colouring, variant=False):
 
 
 if __name__ == "__main__":
-    # Example usage
+    
     num_nodes = 25
     prob = 0.05
     k = 2
