@@ -6,9 +6,9 @@ import matplotlib.colors as mcolors
 
 # --- 0. GRAPH SETUP ---
 G = nx.Graph()
-G.add_nodes_from([1, 2, 3, 4, 5, 6])
-G.add_edges_from([(1, 2), (2, 3), (3, 4), (4, 2), (3, 6), (1, 5)])
-k = 2 
+G.add_nodes_from([1, 2, 3, 4, 5])
+G.add_edges_from([(1, 2), (2, 3), (3, 4), (4, 2), (2, 5)])
+k = 3
 
 # --- UTILITY: DRAWING FUNCTION ---
 
